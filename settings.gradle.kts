@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ugoDroidBurger"
+rootProject.name = "ugoDroidBurger2"
 include(":app")
+ 
