@@ -1,4 +1,4 @@
-package fr.isen.krollak.ugodroidburger2
+package fr.isen.krollak.ugodroidburger2.activities
 
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
@@ -18,10 +18,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import fr.isen.krollak.ugodroidburger2.R
 import fr.isen.krollak.ugodroidburger2.dataclasses.order.Order
 import fr.isen.krollak.ugodroidburger2.dataclasses.order.OrderQuery
 import fr.isen.krollak.ugodroidburger2.interfaces.ApiService
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.encodeToJsonElement
@@ -32,7 +32,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class MainActivity : AppCompatActivity() {
+class OrderActivity : AppCompatActivity() {
     private var BASE_URL: String = "http://test.api.catering.bluecodegames.com"
 
     private lateinit var nameInput: EditText
@@ -48,12 +48,10 @@ class MainActivity : AppCompatActivity() {
     private var isTimeSet: Boolean = false
     private var isAllFieldsChecked: Boolean = false
 
-    @OptIn(ExperimentalSerializationApi::class)
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_order)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -109,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 call.enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if (response.isSuccessful) {
-                            val i = Intent(this@MainActivity, OrderSuccess::class.java)
+                            val i = Intent(applicationContext, OrderSuccessActivity::class.java)
                             startActivity(i)
                         } else {
                             showErrorToast()
@@ -221,5 +219,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-

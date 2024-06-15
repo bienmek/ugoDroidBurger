@@ -1,18 +1,23 @@
-package fr.isen.krollak.ugodroidburger2
+package fr.isen.krollak.ugodroidburger2.activities
 
+import fr.isen.krollak.ugodroidburger2.utils.OrderAdapter
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import fr.isen.krollak.ugodroidburger2.dataclasses.order.Order
+import fr.isen.krollak.ugodroidburger2.R
 import fr.isen.krollak.ugodroidburger2.dataclasses.order_history.OrderHistoryQuery
 import fr.isen.krollak.ugodroidburger2.dataclasses.order_history.OrderHistoryResponse
 import fr.isen.krollak.ugodroidburger2.interfaces.ApiService
@@ -27,11 +32,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class OrderSuccess : AppCompatActivity() {
+class OrderSuccessActivity : AppCompatActivity() {
 
     private var BASE_URL: String = "http://test.api.catering.bluecodegames.com"
     private val json: Json = Json { ignoreUnknownKeys = true }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +48,13 @@ class OrderSuccess : AppCompatActivity() {
         }
 
         retrieveOrders()
+
+        val homeButton: Button = findViewById(R.id.home_btn)
+
+        homeButton.setOnClickListener {
+            val i = Intent(applicationContext, MainActivity::class.java)
+            startActivity(i)
+        }
     }
 
     @OptIn(ExperimentalSerializationApi::class)
@@ -69,11 +80,11 @@ class OrderSuccess : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val orderResponse: OrderHistoryResponse = json.decodeFromString<OrderHistoryResponse>(response.body().toString())
 
-                    println(json.decodeFromString<Order>(orderResponse.data[0].message).firstname)
-                    println(json.decodeFromString<Order>(orderResponse.data[0].message).lastname)
-                    println(json.decodeFromString<Order>(orderResponse.data[0].message).address)
-                    println(json.decodeFromString<Order>(orderResponse.data[0].message).burger)
-                    println(json.decodeFromString<Order>(orderResponse.data[0].message).delivery_time)
+                    val recyclerView: RecyclerView = findViewById(R.id.orderHistory)
+                    recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+
+                    val orderAdapter = OrderAdapter(orderResponse.data)
+                    recyclerView.adapter = orderAdapter
 
                 } else {
                     Log.e("OrderSuccess", "Failed to post order: ${response.code()}")

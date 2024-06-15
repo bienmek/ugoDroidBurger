@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".OrderSuccess">
+    tools:context=".activities.OrderSuccessActivity">
 
     <LinearLayout
         android:id="@+id/content_layout"
@@ -39,6 +39,7 @@
             android:textColor="@color/primary"
             android:textSize="24sp" />
 
+
     </LinearLayout>
 
     <View
@@ -62,41 +63,59 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginBottom="20dp"
-                >
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/validate"
-                    />
+                    android:src="@drawable/validate" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Commande enregistrée avec succès !"
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/rubik"
+                    android:text="Commande enregistrée avec succès !"
                     android:textColor="#1CBB2E"
-                    android:textStyle="bold"
                     android:textSize="16sp"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/home_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accueil"
+                android:fontFamily="@font/rubik_bold"
+                android:backgroundTint="@color/primary"
+                android:layout_gravity="center_horizontal"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="20dp"
+                android:drawableRight="@drawable/arrow_left"
+                android:gravity="center_vertical"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Historique des commandes"
+                android:layout_margin="10dp"
                 android:fontFamily="@font/rubik"
-                android:textStyle="bold"
+                android:text="Historique des commandes"
                 android:textColor="@color/primary"
                 android:textSize="18sp"
-                android:layout_margin="10dp"/>
+                android:textStyle="bold" />
 
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/orderHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp" />
 
         </LinearLayout>
     </ScrollView>
