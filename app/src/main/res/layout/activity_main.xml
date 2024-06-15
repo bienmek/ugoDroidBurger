@@ -2,44 +2,50 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:id="@+id/main"
     tools:context=".MainActivity">
 
 
     <LinearLayout
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="20dp"
-        android:id="@+id/content_layout">
+        android:padding="20dp">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:src="@drawable/logo_2" />
 
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/black" />
+
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:fontFamily="@font/rubik"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/rubik_bold"
             android:singleLine="false"
-            android:text="@string/droid_burger"
+            android:text="Passer Commande"
             android:textColor="@color/primary"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textSize="32sp" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_below="@+id/content_layout"
         android:layout_height="4dp"
+        android:layout_below="@+id/content_layout"
         android:background="@android:color/black" />
 
 
@@ -47,82 +53,128 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/content_layout"
-        android:layout_marginTop="4dp"
-        >
+        android:layout_marginTop="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
-            >
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Passer une Commande"
+                android:layout_height="match_parent"
+                android:text="Coordonnées"
+                android:fontFamily="@font/rubik"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="24sp"/>
+                android:textColor="@color/primary"
+                android:textSize="18sp"
+                android:layout_margin="10dp"/>
 
             <EditText
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/name"
                 android:layout_margin="10dp"
                 android:hint="Nom"
+                android:fontFamily="@font/rubik_bold"
+                android:shadowColor="@color/primary"
+                android:inputType="text"
                 android:padding="20dp" />
 
             <EditText
+                android:id="@+id/surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/surname"
                 android:layout_margin="10dp"
                 android:hint="Prénom"
+                android:fontFamily="@font/rubik_bold"
+                android:inputType="text"
                 android:padding="20dp" />
 
             <EditText
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/address"
                 android:layout_margin="10dp"
                 android:hint="Adresse"
+                android:fontFamily="@font/rubik_bold"
+                android:inputType="text"
                 android:padding="20dp" />
 
             <EditText
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/phone"
                 android:layout_margin="10dp"
                 android:hint="Numéro de Teléphone"
-                android:padding="20dp" />
+                android:fontFamily="@font/rubik_bold"
+                android:inputType="phone"
+                android:padding="20dp"
+                />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Choix du burger"
+                android:fontFamily="@font/rubik"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:textSize="18sp"
+                android:layout_margin="10dp"/>
             <Spinner
+                android:id="@+id/burger_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/burger_list"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/rubik_bold"
                 android:padding="20dp" />
 
-            <TimePicker
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Horaire de livraison"
+                android:fontFamily="@font/rubik"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:textSize="18sp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/displayTime"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/time"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="10dp"
+                android:text="Choisir l'heure"
+                android:drawableLeft="@drawable/clock_icon"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/rubik_bold"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
                 android:layout_margin="10dp"
-                android:hint="Heure de livraison"
-                android:padding="20dp" />
+                android:background="@drawable/time_background"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <Button
+                android:id="@+id/order_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Commander"
+                android:fontFamily="@font/rubik_bold"
+                android:backgroundTint="@color/primary"
+                android:layout_gravity="center_horizontal"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                />
         </LinearLayout>
 
-
-
-
-
-
-
-
     </ScrollView>
-
-
 
 </RelativeLayout>

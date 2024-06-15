@@ -10,5 +10,6 @@
     <color name="background">#F6E1D8</color>
     <color name="primary">#FF9409</color>
     <color name="secondary">#FFFFB320</color>
+    <color name="error">#FF0909</color>
 
 </resources>
