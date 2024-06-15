@@ -48,77 +48,70 @@
         android:layout_below="@+id/content_layout"
         android:background="@android:color/black" />
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/content_layout"
-        android:layout_marginTop="4dp">
+        android:layout_marginTop="4dp"
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:padding="20dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/validate" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:fontFamily="@font/rubik"
-                    android:text="Commande enregistrée avec succès !"
-                    android:textColor="#1CBB2E"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/home_btn"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Accueil"
-                android:fontFamily="@font/rubik_bold"
-                android:backgroundTint="@color/primary"
-                android:layout_gravity="center_horizontal"
-                android:paddingHorizontal="30dp"
-                android:paddingVertical="10dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="20dp"
-                android:drawableRight="@drawable/arrow_left"
-                android:gravity="center_vertical"
-                />
+                android:src="@drawable/validate" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/rubik"
-                android:text="Historique des commandes"
-                android:textColor="@color/primary"
-                android:textSize="18sp"
+                android:text="Commande enregistrée avec succès !"
+                android:textColor="#1CBB2E"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/orderHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp" />
-
         </LinearLayout>
-    </ScrollView>
 
+        <Button
+            android:id="@+id/home_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/primary"
+            android:drawableRight="@drawable/arrow_left"
+            android:fontFamily="@font/rubik_bold"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            android:text="Accueil" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/rubik"
+            android:text="Historique des commandes"
+            android:textColor="@color/primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/orderHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" />
+
+    </LinearLayout>
 </RelativeLayout>
